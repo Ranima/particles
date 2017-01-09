@@ -1,17 +1,21 @@
 #pragma once
 
-
-
-class tree {
+class tree 
+{
 private:
-	struct node {
+	struct node
+	{
+	public:
 		int val;
 		node *left, *right;
+		node(int v) : val(v), left(nullptr), 
+			right(nullptr) {}
 	};
 	node *root;
 
 public:
 	bool IsEmpty();
-	void insert(int value);
+	bool insert(int value);
 	bool find(int value);
+	bool remove(int value);
 };
