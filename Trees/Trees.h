@@ -14,6 +14,7 @@ private:
 	node *root;
 
 public:
+	tree() : root(nullptr) {};
 	bool IsEmpty();
 	bool insert(int value);
 	bool find(int value);

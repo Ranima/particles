@@ -3,10 +3,7 @@
 
 bool tree::IsEmpty()
 {
-	if (root == nullptr)
-		{return true;}
-	else
-		{return false;}
+	return root == nullptr;
 }
 
 bool tree::insert(int value)
@@ -33,7 +30,12 @@ bool tree::insert(int value)
 		}
 		else
 		{
-
+			if (temp->right == nullptr)
+			{
+				temp->right = new node(value);
+				return true;
+			}
+			temp = temp->right;
 		}
 	}
 }
