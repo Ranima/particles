@@ -18,18 +18,12 @@
     <ClCompile Include="bitChecks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pair.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HashMap.cpp">
+    <ClCompile Include="hashtb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Pair.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HashMap.h">
+    <ClInclude Include="hashtb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
