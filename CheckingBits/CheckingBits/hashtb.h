@@ -1,5 +1,5 @@
 #pragma once
-
+//https://www.google.com/search?q=UINT32_C&oq=UINT32_C&aqs=chrome..69i57j0l5.295j0j7&sourceid=chrome&es_sm=93&ie=UTF-8
 #include <cmath>
 
 class hashtable
