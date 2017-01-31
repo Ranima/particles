@@ -1,5 +1,5 @@
 #include <iostream>
-//#include "HashMap.h"
+#include <cassert>
 
 bool isLeftMostBitSet(unsigned int value)
 {
@@ -18,12 +18,13 @@ bool isRightMostBitSet(unsigned int value)
 }
 
 
-#include "hashtb.h"
+//#include "hashtb.h"
+#include "stack.h"
 
 void main()
 {
-	hashtable tb;
-
+//	hashtable tb;
+	
 	//if (isRightMostBitSet(1))
 	//	std::cout << "true" << std::endl;
 	//else
@@ -33,6 +34,9 @@ void main()
 	//	std::cout << "true" << std::endl;
 	//else
 	//	std::cout << "false" << std::endl;
+/*
+	tb.empty();
+	std::cout << tb.empty() << std::endl;
 
 	tb.set(82, 403);
 	std::cout << tb.get(82) << std::endl;
@@ -45,8 +49,26 @@ void main()
 
 
 	tb.count();
-
 	std::cout << tb.count() << std::endl;
+
+	tb.empty();
+	std::cout << tb.empty() << std::endl;
+
+	tb.clear();
+
+	tb.empty();
+	std::cout << tb.empty() << std::endl;
+
+	tb.count();
+	std::cout << tb.count() << std::endl;*/
+
+	stack Stack;
+
+	Stack.push(2);
+	Stack.push(9);
+	Stack.push(6);
+
+	assert(Stack.peek() == 6);
 
 	system("pause");
 }

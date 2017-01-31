@@ -4,7 +4,7 @@
 
 class hashtable
 {
-	const static int TBSIZE = 128;
+	const static int TBSIZE = 150/*pointer*/;
 
 	struct pair
 	{
@@ -19,6 +19,8 @@ class hashtable
 		}
 	};
 
+	size_t *pointer = 0;
+
 	// backing array
 	pair things[TBSIZE];
 
@@ -32,4 +34,9 @@ public:
 
 	int count();
 
+	bool empty();
+
+	void clear();
+
+	void reserve(size_t size);
 };

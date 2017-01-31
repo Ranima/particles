@@ -39,3 +39,33 @@ int hashtable::count()
 	}
 	return total;
 }
+
+bool hashtable::empty()
+{
+	for (int i = 0; i < TBSIZE; ++i)
+	{
+		if (things[i].isSet == true)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+void hashtable::clear()
+{
+	for (int i = 0; i < TBSIZE; ++i)
+	{
+		if (things[i].isSet == true)
+		{
+			things[i].key = 0;
+			things[i].value = 0;
+			things[i].isSet = false;
+		}
+	}
+}
+
+void hashtable::reserve(size_t size)
+{
+	pointer = size;
+}
