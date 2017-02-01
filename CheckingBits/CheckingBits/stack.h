@@ -1,6 +1,6 @@
 #pragma once
 
-class stack
+class Stack
 {
 private:
 	const static int len = 150;

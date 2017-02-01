@@ -62,13 +62,23 @@ void main()
 	tb.count();
 	std::cout << tb.count() << std::endl;*/
 
-	stack Stack;
+	Stack stack;
 
-	Stack.push(2);
-	Stack.push(9);
-	Stack.push(6);
+	stack.push(2);
+	stack.push(9);
+	stack.push(6);
 
-	assert(Stack.peek() == 6);
+	assert(stack.peek() == 6);
+
+	stack.pop();
+	stack.pop();
+	stack.pop();
+
+	stack.push(1);
+	stack.push(66);
+	stack.push(8);
+
+	assert(stack.peek() == 8);
 
 	system("pause");
 }

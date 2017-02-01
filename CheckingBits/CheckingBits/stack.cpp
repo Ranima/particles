@@ -1,18 +1,18 @@
 #include "stack.h"
 
-int stack::pop()
+int Stack::pop()
 {
 	--next;
 	return Sdata[next + 1];
 }
 
-void stack::push(int value)
+void Stack::push(int value)
 {
 	Sdata[next] = value;
 	++next;
 }
 
-int stack::peek()
+int Stack::peek()
 {
 	return Sdata[next - 1];
 }
