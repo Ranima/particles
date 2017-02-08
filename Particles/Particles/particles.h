@@ -1,4 +1,5 @@
 #pragma once
+#include "sfwdraw.h"
 #include "math.h"
 
 struct particle
@@ -9,6 +10,8 @@ struct particle
 	color sColor, eColor;
 
 	float lifetime, lifespan;
+
+	particle() : lifespan(-1), lifetime(0) {}
 
 	bool refresh(float dt)
 	{
@@ -25,4 +28,6 @@ struct particle
 
 		return alpha < 1;
 	}
+
+	bool isActive() const { return lifetime < lifespan; }
 };

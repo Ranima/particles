@@ -1,17 +1,47 @@
 #pragma once
 
 #include "particles.h"
+#include "objectPool.h"
 
-#define PART_SIZE 24
+#define PART_SIZE 10000
 
 class ParticleEmitter
 {
-	particle particles[PART_SIZE];
+	ObjectPool particles;
 
-	float emitRateLo, emitRateHi;
+	void emit()
+	{
+		particles.push(_generate());
+	}
+
+	particle _generate()
+	{
+		particle part;
+		part.pos = pos;
+		part.sprite = sprite;
+
+		part.vel = randDir(angLo, angHi) * lerp(spdLo, spdHi, rand01());
+
+		part.lifespan = lerp(lifespanLo, lifespanHi, rand01());
+
+		part.sColor = lerp(colLoStart, colHiStart, rand01());
+		part.eColor = lerp(colLoEnd, colHiEnd, rand01());
+
+		part.sDim = randRange(dimLoStart, dimHiStart);
+		part.eDim = randRange(dimLoEnd, dimHiEnd);
+
+		part.lifetime = 0;
+		return part;
+	}
+
 	float emissionTimer;
 
+public:
+
+	float emitRateLo, emitRateHi;
+
 	vec2 pos;
+	unsigned sprite;
 	float angLo, angHi;
 	float spdLo, spdHi;
 	vec2 dimLoStart, dimHiStart;
@@ -20,25 +50,25 @@ class ParticleEmitter
 	color colLoEnd, colHiEnd;
 	float lifespanLo, lifespanHi;
 
-	particle _generate()
-	{
-		particle part;
-		part.pos = pos;
-		part.sprite = sprite;
-
-
-	}
+	
 
 	void update(float dt)
 	{
-		for (int i = 0; 1 < PART_SIZE; ++1)
-			if (particles[i].isActive())
-				particles[i].refresh(dt);
-		emissionTimer -= dt;
-		if(emissionTimer < 0)
-			do
-			{
+		for (auto it = particles.begin(); it != particles.end(); )
+		{
+			it->refresh(dt);
 
-			} while (emissionTimer += lerp(emitRateLo, emitRateHi, rand01()) < 0);
+			if (it->isActive())
+				++it;
+			else
+				it.free();
+		}
+
+		emissionTimer -= dt;
+		while (emissionTimer < 0)
+		{
+			emit();
+			emissionTimer += lerp(emitRateLo, emitRateHi, rand01());
+		}
 	}
-}
+};
